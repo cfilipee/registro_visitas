@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 # registro-visitas
 
 # Sistema de Registro de visitas - Gabinete
