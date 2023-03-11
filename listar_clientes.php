@@ -39,38 +39,30 @@ if (isset($_SESSION['success'])) {
 
 <table class="table table-bordered table-hover table-sm table-responsive-xl resultado_cliente">
     <thead>
-        <tr class="bg-dark text-white">
+        <tr class="bg-dark text text-white">
 
-            <th scope="col" class="font-weight-normal">ID</th>
-            <th scope="col" class="font-weight-normal">NOME</th>
-            <th scope="col" class="font-weight-normal">TELEFONE</th>
-            <th scope="col" class="font-weight-normal">CARGO</th>
-            <th scope="col" class="font-weight-normal">PARTIDO</th>
-            <th scope="col" class="font-weight-normal">ASSUNTO</th>
-            
-
-            <!--<th scope="col" class="font-weight-normal">ENDEREÇO</th>-->
-            <!--<th scope="col">CPF</th>-->
-            <!--<th scope="col">RG</th>-->
-            <!--<th scope="col" class="font-weight-normal">ANIVERSÁRIO</th>-->
-            <!--<th scope="col" class="font-weight-normal">RESPONSÁVEL</th>-->
-            <th scope="col" class="text text-center font-weight-normal" colspan="3">AÇÕES</th>
+            <th scope="col">CÓD</th>
+            <th scope="col">NOME</th>
+            <th scope="col">TELEFONE</th>
+            <th scope="col">ENDEREÇO</th>
+            <th scope="col">CPF</th>
+            <th scope="col">RG</th>
+            <th scope="col">NASCIMENTO</th>
+            <th scope="col">RESPONSÁVEL</th>
+            <th scope="col" class="text text-center" colspan="3">AÇÕES</th>
         </tr>
     </thead>
-
-
     <?php
     while ($linha = mysqli_fetch_assoc($resultado)) {
         $id_cliente = $linha['id_cliente'];
         $nome = ucwords(strtolower($linha['nome']));
         $telefone = $linha['telefone'];
-        $cpf = $linha['cpf']; //CARGO
-        //$rg = $linha['rg'];
-
         $responsavel = $linha['criado_por'];
         $situacao = $linha['situacao'];
         $alterado_por = $linha['alterado_por'];
-        
+        $cpf = $linha['cpf'];
+        $rg = $linha['rg'];
+
 
         // CONVERTENDO DATA/HORA PARA PADRAO PORTUGUES-BR
         $ultima_alteracao = $linha['ultima_alteracao'];
@@ -84,118 +76,89 @@ if (isset($_SESSION['success'])) {
         $nascimento = $linha['nascimento'];
         $nascimento = date('d/m/Y',  strtotime($nascimento));
 
-        
-        
-        /*$rua = $linha['rua'];
+        $rua = $linha['rua'];
         $bairro = $linha['bairro'];
         $rua = $linha['rua'];
         $numero = $linha['numero'];
         $cidade = $linha['cidade'];
         $uf = $linha['uf'];
 
-        $endereco = $rua . ", " . $numero . " - " . $bairro . "-" . $cidade . "/" . $uf;*/
-
+        $endereco = $rua . ", " . $numero . " - " . $bairro . "-" . $cidade . "/" . $uf;
     ?>
-
         <tbody>
             <tr>
                 <td><?php echo $id_cliente ?></td>
                 <td><?php echo ucwords(strtolower($nome)); ?></td>
                 <td><?php echo $linha['telefone']; ?></td>
-                <td><?php echo $cpf;?></td> <!--CARGO-->
-
-
-                <!--<td><?//php echo $endereco; ?></td>-->
-                
-                <!--<td>
-                    <? //php echo $rg;
-                    ?>
-                </td>-->
-                <!--<td>
-                    <? //php echo $nascimento 
-                    ?>
-                </td>-->
-                <!--<td>
-                    <? //php echo $responsavel 
-                    ?>
-                </td>-->
-
-                <!--MODAL ÍCONE VISUALIZAR-->
+                <td><?php echo $endereco; ?></td>
+                <td><?php echo $cpf; ?></td>
+                <td><?php echo $rg; ?></td>
+                <td><?php echo $nascimento ?></td>
+                <td><?php echo $responsavel ?></td>
                 <td class="text text-center">
 
-                    <a
-                        href="#" data-toggle="modal"
-                        data-backdrop="static"
-                        data-keyboard="false"
-                        data-target="#visulaizarCliente"
-                        data-whatever="<?php echo $linha['id_cliente']; ?>"
-                        data-whatevernome="<?php echo ucwords(strtolower($linha['nome'])); ?>"
-                        data-whateveremail="<?php echo $linha['email']; ?>"
-                        data-whatevertelefone="<?php echo $linha['telefone']; ?>"
-                        data-whateverrua="<?php echo ucwords(strtolower($linha['rua'])); ?>"
-                        data-whatevernumero="<?php echo $linha['numero']; ?>"
-                        data-whateverbairro="<?php echo $linha['bairro']; ?>"
-                        data-whatevercomplemento="<?php echo $linha['complemento']; ?>"
-                        data-whatevercep="<?php echo $linha['cep']; ?>"
-                        data-whatevercidade="<?php echo $linha['cidade']; ?>"
-                        data-whateveruf="<?php echo $linha['uf']; ?>"
-                        data-whatevertelefone="<?php echo $linha['telefone']; ?>"
-                        data-whatevercelular="<?php echo $linha['celular']; ?>"
-                        data-whatevercpf="<?php echo $linha['cpf']; ?>"
-                        data-whateverrg="<?php echo $linha['rg']; ?>"
-                        data-whatevernascimento="<?php echo $nascimento; ?>"
-                        data-whateveroperador="<?php echo $linha['criado_por']; ?>"
-                        data-whateversituacao="<?php echo $situacao; ?>"
-                        data-whateverdata-cadastro="<?php echo $data_cadastro; ?>"
-                        data-whateveralterado_por="<?php echo $alterado_por; ?>"
-                        data-whateverultima_alteracao="<?php echo $ultima_alteracao; ?>">
+                    <a href="#" data-toggle="modal" 
+                    data-backdrop="static" 
+                    data-keyboard="false" 
+                    data-target="#visulaizarCliente" 
+                    data-whatever="<?php echo $linha['id_cliente']; ?>" 
+                    data-whatevernome="<?php echo ucwords(strtolower($linha['nome'])); ?>" 
+                    data-whateveremail="<?php echo $linha['email']; ?>" 
+                    data-whatevertelefone="<?php echo $linha['telefone']; ?>" 
+                    data-whateverrua="<?php echo ucwords(strtolower($linha['rua'])); ?>" 
+                    data-whatevernumero="<?php echo $linha['numero']; ?>" 
+                    data-whateverbairro="<?php echo $linha['bairro']; ?>" 
+                    data-whatevercomplemento="<?php echo $linha['complemento']; ?>" 
+                    data-whatevercep="<?php echo $linha['cep']; ?>" 
+                    data-whatevercidade="<?php echo $linha['cidade']; ?>" 
+                    data-whateveruf="<?php echo $linha['uf']; ?>" 
+                    data-whatevertelefone="<?php echo $linha['telefone']; ?>" 
+                    data-whatevercelular="<?php echo $linha['celular']; ?>" 
+                    data-whatevercpf="<?php echo $linha['cpf']; ?>" 
+                    data-whateverrg="<?php echo $linha['rg']; ?>" 
+                    data-whatevernascimento="<?php echo $nascimento; ?>" 
+                    data-whateveroperador="<?php echo $linha['criado_por']; ?>" 
+                    data-whateversituacao="<?php echo $situacao; ?>" 
+                    data-whateverdata-cadastro="<?php echo $data_cadastro; ?>"
+                    data-whateveralterado_por="<?php echo $alterado_por; ?>"
+                    data-whateverultima_alteracao="<?php echo $ultima_alteracao; ?>">
 
                         <i class="far fa-eye text text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Visualizar"></i>
                     </a>
                 </td>
 
-                <!--MODAL ÍCONE EDITAR-->
                 <td class="text text-center">
+                    <a href="#" data-toggle="modal" 
+                    data-backdrop="static" 
+                    data-keyboard="false" 
+                    data-target="#editarCliente" 
+                    data-whatever="<?php echo $linha['id_cliente']; ?>" 
+                    data-whatevernome="<?php echo ucwords(strtolower($linha['nome'])); ?>" 
+                    data-whateveremail="<?php echo $linha['email']; ?>" 
+                    data-whatevertelefone="<?php echo $linha['telefone']; ?>" 
+                    data-whateverrua="<?php echo ucwords(strtolower($linha['rua'])); ?>" 
+                    data-whatevernumero="<?php echo $linha['numero']; ?>" 
+                    data-whateverbairro="<?php echo $linha['bairro']; ?>" 
+                    data-whatevercomplemento="<?php echo $linha['complemento']; ?>" 
+                    data-whatevercep="<?php echo $linha['cep']; ?>" 
+                    data-whatevercidade="<?php echo $linha['cidade']; ?>" 
+                    data-whateveruf="<?php echo $linha['uf']; ?>" 
+                    data-whatevertelefone="<?php echo $linha['telefone']; ?>" 
+                    data-whatevercelular="<?php echo $linha['celular']; ?>" 
+                    data-whatevercpf="<?php echo $linha['cpf']; ?>" 
+                    data-whateverrg="<?php echo $linha['rg']; ?>" 
+                    data-whatevernascimento="<?php echo $nascimento; ?>" 
+                    data-whateveroperador="<?php echo $linha['criado_por']; ?>" 
+                    data-whateversituacao="<?php echo $linha['situacao']; ?>" 
+                    data-whateverdata-cadastro="<?php echo $data_cadastro ?>"
+                    data-whateveralterado_por="<?php echo $alterado_por; ?>"
+                    data-whateverultima_alteracao="<?php echo $ultima_alteracao; ?>">
 
-                    <a
-                        href="#" data-toggle="modal"
-                        data-backdrop="static"
-                        data-keyboard="false"
-                        data-target="#editarCliente"
-                        data-whatever="<?php echo $linha['id_cliente']; ?>"
-                        data-whatevernome="<?php echo ucwords(strtolower($linha['nome'])); ?>"
-                        data-whateveremail="<?php echo $linha['email']; ?>"
-                        data-whatevertelefone="<?php echo $linha['telefone']; ?>"
-                        data-whateverrua="<?php echo ucwords(strtolower($linha['rua'])); ?>"
-                        data-whatevernumero="<?php echo $linha['numero']; ?>"
-                        data-whateverbairro="<?php echo $linha['bairro']; ?>"
-                        data-whatevercomplemento="<?php echo $linha['complemento']; ?>"
-                        data-whatevercep="<?php echo $linha['cep']; ?>"
-                        data-whatevercidade="<?php echo $linha['cidade']; ?>"
-                        data-whateveruf="<?php echo $linha['uf']; ?>"
-                        data-whatevertelefone="<?php echo $linha['telefone']; ?>"
-                        data-whatevercelular="<?php echo $linha['celular']; ?>"
-                        data-whatevercpf="<?php echo $linha['cpf']; ?>"
-                        data-whateverrg="<?php echo $linha['rg']; ?>"
-                        data-whatevernascimento="<?php echo $nascimento; ?>"
-                        data-whateveroperador="<?php echo $linha['criado_por']; ?>"
-                        data-whateversituacao="<?php echo $linha['situacao']; ?>"
-                        data-whateverdata-cadastro="<?php echo $data_cadastro ?>"
-                        data-whateveralterado_por="<?php echo $alterado_por; ?>"
-                        data-whateverultima_alteracao="<?php echo $ultima_alteracao; ?>">
-
-                        <i class="far fa-edit text text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"></i>
-                    </a>
+                        <i class="far fa-edit text text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"></i></a>
                 </td>
-
-                <!--ALERT EXCLUIR CLIENTE-->
                 <td class="text text-center">
-                    <a
-                        href="processa_excluir_clientes.php?id_cliente=<?php echo $linha['id_cliente']; ?>"
-                        onClick="return confirm('Deseja realmente excluir <?php echo $linha['nome']; ?>')">
-                        
-                        <i class="far fa-trash-alt text text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir"></i>
-                    </a>
+                    <a href="processa_excluir_clientes.php?id_cliente=<?php echo $linha['id_cliente']; ?>" onClick="return confirm('Deseja realmente deletar o cliente?<?php echo $linha['id_cliente']; ?>')">
+                        <i class="far fa-trash-alt text text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir"></i></a>
                 </td>
 
             </tr>
@@ -209,8 +172,6 @@ if (isset($_SESSION['success'])) {
         border: 2px solid red !important;
     }
 </style>
-
-
 <script>
     // ================================ FUNÇÃO PARA MASCARA DE TELEFONE =============================================
     function mask(o, f) {
@@ -269,7 +230,7 @@ if (isset($_SESSION['success'])) {
 
     // ================================ FUNÇÃO PARA MASCARA DE NASCIMENTO =============================================
     $(document).ready(function() {
-        $("#nascimento").mask("dd/mm/yyyy");
+        $("#nascimento").mask("99/99/9999");
     });
 
     // FUNÇÃO PARA ADICONAR ENDEREÇO VIA CEP (https://viacep.com.br/exemplo/javascript/)
@@ -457,7 +418,7 @@ if (isset($_SESSION['success'])) {
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header ">
-                <h5 class="modal-title" id="exampleModalLabel">NOVO CADASTRO</h5>
+                <h5 class="modal-title" id="exampleModalLabel">CADASTRO DE CLIENTES</h5>
 
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -478,75 +439,13 @@ if (isset($_SESSION['success'])) {
                 <form method="POST" id="insert_form">
 
                     <div class="row">
-                        <div class="col-md-12 col-sm-12">
+                        <div class="col-md-6 col-sm-12">
                             <label for="recipient-nome" class="col-form-label">Nome</label>
                             <input type="text" name="nome" id="nome" maxlength="50" class="form-control">
                         </div>
-
-                        <div class="col-md-3 col-sm-12">
-                            <label for="recipient-telefone" class="col-form-label">Telefone</label>
-                            <input type="text" name="telefone" id="telefone" onkeypress="mask(this, telefone);" onblur="mask(this, telefone);" class="form-control -10">
-                        </div>
-
-                        <!--<div class="col-md-6 col-sm-12">
+                        <div class="col-md-6 col-sm-12">
                             <label for="recipient-email" class="col-form-label">E-mail</label>
                             <input type="email" name="email" id="email" maxlength="50" class="form-control -10">
-                        </div>-->
-                    </div>
-
-                    <!--CARGO - PARTIDO - ASSUNTO-->
-                    <div class="row">
-                        <div class="col-md-4 col-sm-12">
-                        <label for="recipient-cpf" class="col-form-label">Cargo</label>
-                           <select class="form-control">
-                                <option selected></option>
-                                <option value="AC">Governador</option>
-                                <option value="AC">Prefeito</option>
-                                <option value="AL">Dep. Federal</option>
-                                <option value="AP">Dep. Estadual</option>
-                                <option value="AP">Vereador</option>
-                            </select>   
-                        </div>
-                        <div class="col-md-4 col-sm-12">
-                            <label for="recipient-rg" class="col-form-label">Partido</label>
-                            <select class="form-control" id="rg">
-                                <option selected></option>
-                                <option value="MDB">MDB</option>
-                                <option value="PTB">PTB</option>
-                                <option value="PDT">PDT</option>
-                                <option value="PT">PT</option>
-                                <option value="PCdoB">PCdoB</option>
-                                <option value="PSB">PSB</option>
-                                <option value="PSDB">PSDB</option>
-                                <option value="AGIR">AGIR</option>
-                                <option value="PMN">PMN</option>
-                                <option value="CIDADANIA">CIDADANIA</option>
-                                <option value="PV">PV</option>
-                                <option value="AVANTE">AVANTE</option>
-                                <option value="PP">PP</option>
-                                <option value="PSTU">PSTU</option>
-                                <option value="PCB">PCB</option>
-                                <option value="PRTB">PRTB</option>
-                                <option value="DC">DC</option>
-                                <option value="PCO">PCO</option>
-                                <option value="PODE">PODE</option>
-                                <option value="REPUBLICANOS">REPUBLICANOS</option>
-                                <option value="PSOL">PSOL</option>
-                                <option value="PL">PL</option>
-                                <option value="PSD">PSD</option>
-                                <option value="PATRIOTA">PATRIOTA</option>
-                                <option value="SOLIDARIEDADE">SOLIDARIEDADE</option>
-                                <option value="NOVO">NOVO</option>
-                                <option value="REDE">REDE</option>
-                                <option value="PMB">PMB</option>
-                                <option value="UP">UP</option>
-                                <option value="UNIÃO">UNIÃO</option>
-                            </select>
-                            <!--<input type="text" name="rg" id="rg" maxlength="50" class="form-control -10">-->
-                        </div>
-                        <div class="col-md-4 col-sm-12">
-                            <label for="recipient-nascimento" class="col-form-label">Nascimento</label>
-                            <input type="text" name="nascimento" id="nascimento" class="form-control -10">
                         </div>
                     </div>
 
@@ -561,26 +460,21 @@ if (isset($_SESSION['success'])) {
                         </div>
 
                     </div>
-
-                    <!--ENDEREÇO-->
-                    
                     <div class="row">
                         <div class="col-md-5 col-sm-12">
                             <label for="recipient-bairro" class="col-form-label">Bairro</label>
                             <input type="text" name="bairro" id="bairro" maxlength="50" class="form-control">
                         </div>
-                        <!--<div class="col-md-5 col-sm-12">
+                        <div class="col-md-5 col-sm-12">
                             <label for="recipient-complemento" class="col-form-label">Complemento</label>
                             <input type="text" name="complemento" id="complemento" maxlength="50" class="form-control -10">
-                        </div>-->
+                        </div>
                         <div class="col-md-2 col-sm-12">
                             <label for="recipient-cep" class="col-form-label">Cep</label>
                             <input type="text" name="cep" id="cep" maxlength="50" class="form-control -10 border border-warning" onblur="pesquisacep(this.value);">
                         </div>
 
                     </div>
-
-
                     <div class="row">
                         <div class="col-md-4 col-sm-12">
                             <label for="recipient-cidade" class="col-form-label">Cidade</label>
@@ -600,7 +494,20 @@ if (isset($_SESSION['success'])) {
                         </div>
 
                     </div>
-                    
+                    <div class="row">
+                        <div class="col-md-4 col-sm-12">
+                            <label for="recipient-cpf" class="col-form-label">CPF</label>
+                            <input type="text" name="cpf" id="cpf" maxlength="50" class="form-control">
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <label for="recipient-rg" class="col-form-label">RG</label>
+                            <input type="text" name="rg" id="rg" maxlength="50" class="form-control -10">
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <label for="recipient-nascimento" class="col-form-label">Nascimento</label>
+                            <input type="text" name="nascimento" id="nascimento" class="form-control -10">
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-4 col-sm-12">
                             <label for="recipient-operador" class="col-form-label cli">Operador</label>
@@ -612,15 +519,15 @@ if (isset($_SESSION['success'])) {
                         </div>
                         <div class="col-md-4 col-sm-12">
 
-                            <label for="recipient-situacao" class="col-form-label">Situação</label>
-                            <select class="form-control form-select-lg mb-5 select2" name="situacao" id="situacao" aria-label=".form-select-lg example">
-                                <option value="Pendente">Pendente</option>
-                                <option value="Ativo">Ativo</option>
-                                <option value="Inativo">Inativo</option>
-                                <option value="Cancelado">Cancelado</option>
+                        <label for="recipient-situacao" class="col-form-label">Situação</label>
+                        <select class="form-control form-select-lg mb-5 select2" name="situacao" id="situacao" aria-label=".form-select-lg example">
+                            <option value="Pendente">Pendente</option>
+                            <option value="Ativo">Ativo</option>
+                            <option value="Inativo">Inativo</option>
+                            <option value="Cancelado">Cancelado</option>
 
-                            </select>
-
+                        </select>
+                       
                         </div>
                     </div>
 
@@ -730,7 +637,7 @@ if (isset($_SESSION['success'])) {
                     <div class="row">
                         <div class="col-md-4 col-sm-12">
                             <label for="recipient-operador" class="col-form-label cli">Cadastrado por</label>
-                            <input type="text" name="operador" id="recipient-operador" maxlength="50" class="form-control" disabled>
+                            <input type="text" name="operador" id="recipient-operador" maxlength="50" class="form-control" disabled >
                         </div>
                         <div class="col-md-4 col-sm-12">
                             <label for="recipient-dataCadastro" class="col-form-label">Data do cadastro</label>
@@ -752,13 +659,13 @@ if (isset($_SESSION['success'])) {
                     <div class="row">
                         <div class="col-md-4 col-sm-12">
                             <label for="recipient-alterado_por" class="col-form-label cli">Alterado por</label>
-                            <input type="text" name="alterado_por" id="recipient-alterado_por" maxlength="50" class="form-control" disabled>
+                            <input type="text" name="alterado_por" id="recipient-alterado_por" maxlength="50" class="form-control" disabled >
                         </div>
                         <div class="col-md-4 col-sm-12">
                             <label for="recipientultima_alteracao" class="col-form-label">Última Alteração</label>
                             <input type="text" class="form-control" name="ultima_alteracao" id="recipientultima_alteracao" disabled>
                         </div>
-
+                        
                     </div>
             </div>
             <div class="modal-footer">
@@ -798,7 +705,7 @@ if (isset($_SESSION['success'])) {
         var recipientultima_alteracao = button.data('whateverultima_alteracao')
 
         var modal = $(this)
-        modal.find('.modal-title').text('Visualizando Cadastro de ' + recipientnome)
+        modal.find('.modal-title').text('VISUALIZAR CLIENTE CÓDIGO: ' + recipient)
         modal.find('#id').val(recipient)
         modal.find('#recipient-name').val(recipientnome)
         modal.find('#recipient-email').val(recipientemail)
@@ -836,7 +743,7 @@ if (isset($_SESSION['success'])) {
             </div>
             <div class="modal-body">
                 <form method="POST" action="processa_edit_clientes.php" enctype="multipart/form-data">
-
+                   
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
                             <label for="recipient-name" class="col-form-label">Nome</label>
@@ -887,11 +794,13 @@ if (isset($_SESSION['success'])) {
                         </div>
                         <div class="col-md-3 col-sm-12">
                             <label for="recipient-telefone" class="col-form-label">Telefone</label>
-                            <input type="text" name="telefone" id="recipient-telefone" onkeypress="mask(this, telefone);" onblur="mask(this, telefone);" class="form-control -10">
+                            <input type="text" name="telefone" id="recipient-telefone" onkeypress="mask(this, telefone);" 
+                            onblur="mask(this, telefone);" class="form-control -10">
                         </div>
                         <div class="col-md-3 col-sm-12">
                             <label for="recipient-celular" class="col-form-label">Celular</label>
-                            <input type="text" name="celular" id="recipient-celular" maxlength="50" onkeypress="mask(this, celular);" onblur="mask(this, celular);" class="form-control -10">
+                            <input type="text" name="celular" id="recipient-celular" maxlength="50" 
+                            onkeypress="mask(this, celular);" onblur="mask(this, celular);" class="form-control -10">
                         </div>
                     </div>
 
@@ -906,7 +815,7 @@ if (isset($_SESSION['success'])) {
                         </div>
                         <div class="col-md-4 col-sm-12">
                             <label for="recipient-nascimento" class="col-form-label">Nascimento</label>
-                            <input type="text" name="nascimento" id="recipient-nascimento" class="form-control -10">
+                            <input type="text" name="nascimento" id="recipient-nascimento" class="form-control -10" >
                         </div>
                     </div>
                     <div class="row">
@@ -931,7 +840,7 @@ if (isset($_SESSION['success'])) {
 
                         </div>
                     </div>
-
+                   
 
                     <div class="row">
                         <div class="col-md-4 col-sm-12">
@@ -942,9 +851,9 @@ if (isset($_SESSION['success'])) {
                             <label for="recipient-dataCadastro" class="col-form-label">Última Alteração</label>
                             <input type="text" class="form-control" name="ultima_alteracao" id="recipientultima_alteracao" value="<?php echo date('d/m/Y - H:i:s') ?>" disabled>
                         </div>
-
+                        
                     </div>
-
+                    
 
                     <input type="hidden" name="id" class="form-control" id="id">
             </div>
@@ -986,7 +895,7 @@ if (isset($_SESSION['success'])) {
         var recipientultima_alteracao = button.data('whateverultima_alteracao')
 
         var modal = $(this)
-        modal.find('.modal-title').text('Editar Cadastro de ' + recipientnome)
+        modal.find('.modal-title').text('EDITAR CLIENTE CÓDIGO: ' + recipient)
         modal.find('#id').val(recipient)
         modal.find('#recipient-name').val(recipientnome)
         modal.find('#recipient-email').val(recipientemail)
