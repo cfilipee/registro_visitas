@@ -9,15 +9,15 @@ $id_cliente = mysqli_real_escape_string($conn, $_POST['id']);
 $nome = mysqli_real_escape_string($conn, ucwords(strtolower($_POST['nome'])));
 $email = mysqli_real_escape_string($conn, strtolower($_POST['email']));
 $telefone = mysqli_real_escape_string($conn, $_POST['telefone']);
-$celular = mysqli_real_escape_string($conn, $_POST['celular']);
+$assunto = mysqli_real_escape_string($conn, $_POST['assunto']);
 $cep = mysqli_real_escape_string($conn, $_POST['cep']);
 $rua = mysqli_real_escape_string($conn, $_POST['rua']);
 $numero = mysqli_real_escape_string($conn, $_POST['numero']);
 $bairro = mysqli_real_escape_string($conn, $_POST['bairro']);
 $cidade = mysqli_real_escape_string($conn, $_POST['cidade']);
 $uf = mysqli_real_escape_string($conn, $_POST['uf']);
-$cpf = mysqli_real_escape_string($conn, $_POST['cpf']);
-$rg = mysqli_real_escape_string($conn, $_POST['rg']);
+$cargo = mysqli_real_escape_string($conn, $_POST['cargo']);
+$partido = mysqli_real_escape_string($conn, $_POST['partido']);
 $situacao = mysqli_real_escape_string($conn, $_POST['situacao']);
 $complemento = mysqli_real_escape_string($conn, $_POST['complemento']);
 $alterado_por = $_SESSION['usuarioNome'];
@@ -28,8 +28,8 @@ $nascimento = mysqli_real_escape_string($conn, $_POST['nascimento']);
 $nascimento = str_replace("/", "-", $nascimento);
 $nascimento = date('Y-m-d', strtotime($nascimento));
 
-$altera_cliente = "UPDATE clientes SET nome='$nome', email='$email', telefone='$telefone', celular='$celular', 
-cep='$cep', rua='$rua', numero='$numero', bairro='$bairro', cidade='$cidade', uf='$uf', cpf='$cpf', rg='$rg', 
+$altera_cliente = "UPDATE clientes SET nome='$nome', email='$email', telefone='$telefone', assunto='$assunto', 
+cep='$cep', rua='$rua', numero='$numero', bairro='$bairro', cidade='$cidade', uf='$uf', cargo='$cargo', partido='$partido', 
 nascimento='$nascimento', alterado_por='$alterado_por', ultima_alteracao='$ultima_alteracao', situacao='$situacao', complemento='$complemento' WHERE id_cliente='$id_cliente'";
 $resposta = mysqli_query($conn, $altera_cliente);
 

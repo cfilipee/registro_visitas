@@ -44,15 +44,21 @@ if (isset($_SESSION['success'])) {
             <th scope="col">CÓD</th>
             <th scope="col">NOME</th>
             <th scope="col">TELEFONE</th>
-            <th scope="col">ENDEREÇO</th>
-            <th scope="col">CPF</th>
-            <th scope="col">RG</th>
+            <th scope="col">Cargo</th>
+            <th scope="col">Partido</th>
+            <th scope="col">Assunto</th>
+            <!-- <th scope="col">ENDEREÇO</th> -->
             <th scope="col">NASCIMENTO</th>
             <th scope="col">RESPONSÁVEL</th>
             <th scope="col" class="text text-center" colspan="3">AÇÕES</th>
+            
+
+            
         </tr>
     </thead>
+
     <?php
+    //PUXANDO OS DADOS DO BANCO!
     while ($linha = mysqli_fetch_assoc($resultado)) {
         $id_cliente = $linha['id_cliente'];
         $nome = ucwords(strtolower($linha['nome']));
@@ -60,8 +66,21 @@ if (isset($_SESSION['success'])) {
         $responsavel = $linha['criado_por'];
         $situacao = $linha['situacao'];
         $alterado_por = $linha['alterado_por'];
-        $cpf = $linha['cpf'];
-        $rg = $linha['rg'];
+        $cargo = $linha['cargo'];
+        $partido = $linha['partido'];
+        $assunto = $linha['assunto'];
+        
+        $rua = $linha['rua'];
+        $bairro = $linha['bairro'];
+        $rua = $linha['rua'];
+        $numero = $linha['numero'];
+        $cidade = $linha['cidade'];
+        $uf = $linha['uf'];
+        $endereco = $rua . ", " . $numero . " - " . $bairro . "-" . $cidade . "/" . $uf;
+
+        // CONVERTENDO NASCIMENTO PARA PADRAO PORTUGUES-BR
+        $nascimento = $linha['nascimento'];
+        $nascimento = date('d/m/Y',  strtotime($nascimento));
 
 
         // CONVERTENDO DATA/HORA PARA PADRAO PORTUGUES-BR
@@ -72,27 +91,19 @@ if (isset($_SESSION['success'])) {
         $data_cadastro = $linha['data_cadastro'];
         $data_cadastro = date('d/m/Y H:i:s',  strtotime($data_cadastro));
 
-        // CONVERTENDO NASCIMENTO PARA PADRAO PORTUGUES-BR
-        $nascimento = $linha['nascimento'];
-        $nascimento = date('d/m/Y',  strtotime($nascimento));
+        
 
-        $rua = $linha['rua'];
-        $bairro = $linha['bairro'];
-        $rua = $linha['rua'];
-        $numero = $linha['numero'];
-        $cidade = $linha['cidade'];
-        $uf = $linha['uf'];
-
-        $endereco = $rua . ", " . $numero . " - " . $bairro . "-" . $cidade . "/" . $uf;
+        
     ?>
+        <!--MOSTRANDO OS DADOS DO BANCO NA TABELA-->
         <tbody>
             <tr>
                 <td><?php echo $id_cliente ?></td>
                 <td><?php echo ucwords(strtolower($nome)); ?></td>
-                <td><?php echo $linha['telefone']; ?></td>
-                <td><?php echo $endereco; ?></td>
-                <td><?php echo $cpf; ?></td>
-                <td><?php echo $rg; ?></td>
+                <td><?php echo $linha['telefone']; ?></td>                
+                <td><?php echo $cargo; ?></td>                
+                <td><?php echo $partido; ?></td>
+                <td><?php echo $assunto; ?></td>
                 <td><?php echo $nascimento ?></td>
                 <td><?php echo $responsavel ?></td>
                 <td class="text text-center">
@@ -113,9 +124,9 @@ if (isset($_SESSION['success'])) {
                     data-whatevercidade="<?php echo $linha['cidade']; ?>" 
                     data-whateveruf="<?php echo $linha['uf']; ?>" 
                     data-whatevertelefone="<?php echo $linha['telefone']; ?>" 
-                    data-whatevercelular="<?php echo $linha['celular']; ?>" 
-                    data-whatevercpf="<?php echo $linha['cpf']; ?>" 
-                    data-whateverrg="<?php echo $linha['rg']; ?>" 
+                    data-whateverassunto="<?php echo $linha['assunto']; ?>" 
+                    data-whatevercargo="<?php echo $linha['cargo']; ?>" 
+                    data-whateverpartido="<?php echo $linha['partido']; ?>" 
                     data-whatevernascimento="<?php echo $nascimento; ?>" 
                     data-whateveroperador="<?php echo $linha['criado_por']; ?>" 
                     data-whateversituacao="<?php echo $situacao; ?>" 
@@ -144,9 +155,9 @@ if (isset($_SESSION['success'])) {
                     data-whatevercidade="<?php echo $linha['cidade']; ?>" 
                     data-whateveruf="<?php echo $linha['uf']; ?>" 
                     data-whatevertelefone="<?php echo $linha['telefone']; ?>" 
-                    data-whatevercelular="<?php echo $linha['celular']; ?>" 
-                    data-whatevercpf="<?php echo $linha['cpf']; ?>" 
-                    data-whateverrg="<?php echo $linha['rg']; ?>" 
+                    data-whateverassunto="<?php echo $linha['assunto']; ?>" 
+                    data-whatevercargo="<?php echo $linha['cargo']; ?>" 
+                    data-whateverpartido="<?php echo $linha['partido']; ?>" 
                     data-whatevernascimento="<?php echo $nascimento; ?>" 
                     data-whateveroperador="<?php echo $linha['criado_por']; ?>" 
                     data-whateversituacao="<?php echo $linha['situacao']; ?>" 
@@ -199,34 +210,34 @@ if (isset($_SESSION['success'])) {
     }
 
     // ================================ FUNÇÃO PARA MASCARA DE CELULAR =============================================
-    function mask(o, f) {
-        setTimeout(function() {
-            var v = celular(o.value);
-            if (v != o.value) {
-                o.value = v;
-            }
-        }, 1);
-    }
+    // function mask(o, f) {
+    //     setTimeout(function() {
+    //         var v = celular(o.value);
+    //         if (v != o.value) {
+    //             o.value = v;
+    //         }
+    //     }, 1);
+    // }
 
-    function celular(v) {
-        var r = v.replace(/\D/g, "");
-        r = r.replace(/^0/, ""); //limpa o campo se começar com ZERO (0)
-        if (r.length > 10) {
-            r = r.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
-        } else if (r.length > 5) {
-            r = r.replace(/^(\d\d)(\d{4})(\d{0,4}).*/, "($1) $2-$3");
-        } else if (r.length > 2) {
-            r = r.replace(/^(\d\d)(\d{0,5})/, "($1) $2");
-        } else {
-            r = r.replace(/^(\d*)/, "($1");
-        }
-        return r;
-    }
+    // function celular(v) {
+    //     var r = v.replace(/\D/g, "");
+    //     r = r.replace(/^0/, ""); //limpa o campo se começar com ZERO (0)
+    //     if (r.length > 10) {
+    //         r = r.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
+    //     } else if (r.length > 5) {
+    //         r = r.replace(/^(\d\d)(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+    //     } else if (r.length > 2) {
+    //         r = r.replace(/^(\d\d)(\d{0,5})/, "($1) $2");
+    //     } else {
+    //         r = r.replace(/^(\d*)/, "($1");
+    //     }
+    //     return r;
+    // }
 
     // ================================ FUNÇÃO PARA MASCARA DE CPF =============================================
-    $(document).ready(function() {
-        $("#cpf").mask("999.999.999-99");
-    });
+    // $(document).ready(function() {
+    //     $("#cpf").mask("999.999.999-99");
+    // });
 
     // ================================ FUNÇÃO PARA MASCARA DE NASCIMENTO =============================================
     $(document).ready(function() {
@@ -489,19 +500,19 @@ if (isset($_SESSION['success'])) {
                             <input type="text" name="telefone" id="telefone" onkeypress="mask(this, telefone);" onblur="mask(this, telefone);" class="form-control -10">
                         </div>
                         <div class="col-md-3 col-sm-12">
-                            <label for="recipient-celular" class="col-form-label">Celular</label>
-                            <input type="text" name="celular" id="celular" maxlength="50" onkeypress="mask(this, celular);" onblur="mask(this, celular);" class="form-control -10">
+                            <label for="recipient-assunto" class="col-form-label">Assunto</label>
+                            <input type="text" name="assunto" id="assunto" maxlength="50" class="form-control -10">
                         </div>
 
                     </div>
                     <div class="row">
                         <div class="col-md-4 col-sm-12">
-                            <label for="recipient-cpf" class="col-form-label">CPF</label>
-                            <input type="text" name="cpf" id="cpf" maxlength="50" class="form-control">
+                            <label for="recipient-cargo" class="col-form-label">Cargo</label>
+                            <input type="text" name="cargo" id="cargo" maxlength="50" class="form-control">
                         </div>
                         <div class="col-md-4 col-sm-12">
-                            <label for="recipient-rg" class="col-form-label">RG</label>
-                            <input type="text" name="rg" id="rg" maxlength="50" class="form-control -10">
+                            <label for="recipient-partido" class="col-form-label">Partido</label>
+                            <input type="text" name="partido" id="partido" maxlength="50" class="form-control -10">
                         </div>
                         <div class="col-md-4 col-sm-12">
                             <label for="recipient-nascimento" class="col-form-label">Nascimento</label>
@@ -535,7 +546,6 @@ if (isset($_SESSION['success'])) {
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                 <button type="submit" class="btn btn-primary" id="btn-cadastrar">Salvar</button>
-
             </div>
 
             </form>
@@ -615,19 +625,19 @@ if (isset($_SESSION['success'])) {
                             <input type="text" name="telefone" id="recipient-telefone" onkeypress="mask(this, telefone);" onblur="mask(this, telefone);" class="form-control -10" disabled>
                         </div>
                         <div class="col-md-3 col-sm-12">
-                            <label for="recipient-celular" class="col-form-label">Celular</label>
-                            <input type="text" name="celular" id="recipient-celular" maxlength="50" onkeypress="mask(this, celular);" onblur="mask(this, celular);" class="form-control -10" disabled>
+                            <label for="recipient-assunto" class="col-form-label">Assunto</label>
+                            <input type="text" name="assunto" id="recipient-assunto" maxlength="50" onkeypress="mask(this, assunto);" onblur="mask(this, assunto);" class="form-control -10" disabled>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-4 col-sm-12">
-                            <label for="recipient-cpf" class="col-form-label">CPF</label>
-                            <input type="text" name="cpf" id="recipient-cpf" maxlength="50" class="form-control" disabled>
+                            <label for="recipient-cargo" class="col-form-label">Cargo</label>
+                            <input type="text" name="cargo " id="recipient-cargo" maxlength="50" class="form-control" disabled>
                         </div>
                         <div class="col-md-4 col-sm-12">
-                            <label for="recipient-rg" class="col-form-label">RG</label>
-                            <input type="text" name="rg" id="recipient-rg" maxlength="50" class="form-control -10" disabled>
+                            <label for="recipient-partido" class="col-form-label">Partido</label>
+                            <input type="text" name="partido" id="recipient-partido" maxlength="50" class="form-control -10" disabled>
                         </div>
                         <div class="col-md-4 col-sm-12">
                             <label for="recipient-nascimento" class="col-form-label">Nascimento</label>
@@ -694,9 +704,9 @@ if (isset($_SESSION['success'])) {
         var recipientcidade = button.data('whatevercidade')
         var recipientuf = button.data('whateveruf')
         var recipienttelefone = button.data('whatevertelefone')
-        var recipientcelular = button.data('whatevercelular')
-        var recipientcpf = button.data('whatevercpf')
-        var recipientrg = button.data('whateverrg')
+        var recipientassunto = button.data('whateverassunto')
+        var recipientcargo = button.data('whatevercargo')
+        var recipientpartido = button.data('whateverpartido')
         var recipientnascimento = button.data('whatevernascimento')
         var recipientoperador = button.data('whateveroperador')
         var recipientsituacao = button.data('whateversituacao')
@@ -718,9 +728,9 @@ if (isset($_SESSION['success'])) {
         modal.find('#recipient-cidade').val(recipientcidade)
         modal.find('#recipient-uf').val(recipientuf)
         modal.find('#recipient-telefone').val(recipienttelefone)
-        modal.find('#recipient-celular').val(recipientcelular)
-        modal.find('#recipient-cpf').val(recipientcpf)
-        modal.find('#recipient-rg').val(recipientrg)
+        modal.find('#recipient-assunto').val(recipientassunto)
+        modal.find('#recipient-cargo').val(recipientcargo  )
+        modal.find('#recipient-partido').val(recipientpartido)
         modal.find('#recipient-nascimento').val(recipientnascimento)
         modal.find('#recipient-operador').val(recipientoperador)
         modal.find('#recipient-situacao').val(recipientsituacao)
@@ -798,20 +808,20 @@ if (isset($_SESSION['success'])) {
                             onblur="mask(this, telefone);" class="form-control -10">
                         </div>
                         <div class="col-md-3 col-sm-12">
-                            <label for="recipient-celular" class="col-form-label">Celular</label>
-                            <input type="text" name="celular" id="recipient-celular" maxlength="50" 
-                            onkeypress="mask(this, celular);" onblur="mask(this, celular);" class="form-control -10">
+                            <label for="recipient-assunto" class="col-form-label">assunto</label>
+                            <input type="text" name="assunto" id="recipient-assunto" maxlength="50" 
+                            onkeypress="mask(this, assunto);" onblur="mask(this, assunto);" class="form-control -10">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-4 col-sm-12">
-                            <label for="recipient-cpf" class="col-form-label">CPF</label>
-                            <input type="text" name="cpf" id="recipient-cpf" maxlength="50" class="form-control">
+                            <label for="recipient-cargo" class="col-form-label">Cargo</label>
+                            <input type="text" name="cargo" id="recipient-cargo" maxlength="50" class="form-control">
                         </div>
                         <div class="col-md-4 col-sm-12">
-                            <label for="recipient-rg" class="col-form-label">RG</label>
-                            <input type="text" name="rg" id="recipient-rg" maxlength="50" class="form-control -10">
+                            <label for="recipient-partido" class="col-form-label">Partido</label>
+                            <input type="text" name="partido" id="recipient-partido" maxlength="50" class="form-control -10">
                         </div>
                         <div class="col-md-4 col-sm-12">
                             <label for="recipient-nascimento" class="col-form-label">Nascimento</label>
@@ -884,9 +894,9 @@ if (isset($_SESSION['success'])) {
         var recipientcidade = button.data('whatevercidade')
         var recipientuf = button.data('whateveruf')
         var recipienttelefone = button.data('whatevertelefone')
-        var recipientcelular = button.data('whatevercelular')
-        var recipientcpf = button.data('whatevercpf')
-        var recipientrg = button.data('whateverrg')
+        var recipientassunto = button.data('whateverassunto')
+        var recipientcargo = button.data('whatevercargo')
+        var recipientpartido = button.data('whateverpartido')
         var recipientnascimento = button.data('whatevernascimento')
         var recipientoperador = button.data('whateveroperador')
         var recipientsituacao = button.data('whateversituacao')
@@ -908,9 +918,9 @@ if (isset($_SESSION['success'])) {
         modal.find('#recipient-cidade').val(recipientcidade)
         modal.find('#recipient-uf').val(recipientuf)
         modal.find('#recipient-telefone').val(recipienttelefone)
-        modal.find('#recipient-celular').val(recipientcelular)
-        modal.find('#recipient-cpf').val(recipientcpf)
-        modal.find('#recipient-rg').val(recipientrg)
+        modal.find('#recipient-assunto').val(recipientassunto)
+        modal.find('#recipient-cargo').val(recipientcargo)
+        modal.find('#recipient-partido').val(recipientpartido)
         modal.find('#recipient-nascimento').val(recipientnascimento)
         modal.find('#recipient-operador').val(recipientoperador)
         modal.find('#recipient-situacao').val(recipientsituacao)

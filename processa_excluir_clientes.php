@@ -23,10 +23,6 @@ if($resposta){
                         </div>";
     header('Location: listar_clientes.php');
 }else{
-
-
-    
-  
   
 
     $_SESSION['error'] = "<div class='alert alert-danger alert-dismissible fade show text text-center mb-0' role='alert'>

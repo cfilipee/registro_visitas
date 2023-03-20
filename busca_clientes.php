@@ -22,7 +22,7 @@ if (isset($_SESSION['success'])) {
 
 
 $busca = $_POST['palavra'];
-$busca = "SELECT * FROM clientes WHERE nome LIKE '%$busca%' OR cpf LIKE '%$busca%' OR nascimento LIKE '%$busca%' OR rg LIKE '%$busca%'";
+$busca = "SELECT * FROM clientes WHERE nome LIKE '%$busca%' OR cargo LIKE '%$busca%' OR nascimento LIKE '%$busca%' OR partido LIKE '%$busca%'";
 $resultado = mysqli_query($conn, $busca);
 ?>
 
@@ -36,12 +36,14 @@ $resultado = mysqli_query($conn, $busca);
             <th scope="col">CARGO</th>
             <th scope="col">PARTIDO</th>
             <th scope="col">ASSUNTO</th>
+            <th scope="col">RESPONSÁVEL</th>
+            <th scope="col" class="text text-center" colspan="3">AÇÕES</th>
             
             <!--<th scope="col">CPF</th>
             <th scope="col">RG</th>-->
             <!--<th scope="col">NASCIMENTO</th>-->
-            <!--<th scope="col">RESPONSÁVEL</th>-->
-            <th scope="col" class="text text-center" colspan="3">AÇÕES</th>
+            
+            
         </tr>
     </thead>
 
@@ -54,8 +56,8 @@ $resultado = mysqli_query($conn, $busca);
         $responsavel = $linha['criado_por'];
         $situacao = $linha['situacao'];
         $alterado_por = $linha['alterado_por'];
-        $cpf = $linha['cpf'];
-        //$rg = $linha['rg'];
+        $cargo = $linha['cargo'];
+        $partido = $linha['partido'];
 
 
         // CONVERTENDO DATA/HORA PARA PADRAO PORTUGUES-BR
@@ -87,10 +89,10 @@ $resultado = mysqli_query($conn, $busca);
                 <td><?php echo $id_cliente ?></td>
                 <td><?php echo ucwords(strtolower($nome)); ?></td>
                 <td><?php echo $linha['telefone']; ?></td>
-                <td><?php echo $cpf; ?></td>
+                <td><?php echo $cargo; ?></td>
                 <!--<td><?//php echo $endereco; ?></td>-->
                 
-                <!--<td><?//php echo $rg; ?></td>-->
+                <td><?php echo $partido; ?></td>
                 <td><?php echo $nascimento ?></td>
                 <td><?php echo $responsavel ?></td>
                 <td class="text text-center">
@@ -111,9 +113,9 @@ $resultado = mysqli_query($conn, $busca);
                     data-whatevercidade="<?php echo $linha['cidade']; ?>"
                     data-whateveruf="<?php echo $linha['uf']; ?>"
                     data-whatevertelefone="<?php echo $linha['telefone']; ?>"
-                    data-whatevercelular="<?php echo $linha['celular']; ?>"
-                    data-whatevercpf="<?php echo $linha['cpf']; ?>"
-                    data-whateverrg="<?php echo $linha['rg']; ?>"
+                    data-whateverassunto="<?php echo $linha['assunto']; ?>"
+                    data-whatevercargo="<?php echo $linha['cargo']; ?>"
+                    data-whateverpartido="<?php echo $linha['partido']; ?>"
                     data-whatevernascimento="<?php echo $nascimento; ?>"
                     data-whateveroperador="<?php echo $linha['criado_por']; ?>"
                     data-whateversituacao="<?php echo $situacao; ?>"
@@ -142,9 +144,9 @@ $resultado = mysqli_query($conn, $busca);
                     data-whatevercidade="<?php echo $linha['cidade']; ?>"
                     data-whateveruf="<?php echo $linha['uf']; ?>"
                     data-whatevertelefone="<?php echo $linha['telefone']; ?>"
-                    data-whatevercelular="<?php echo $linha['celular']; ?>"
-                    data-whatevercpf="<?php echo $linha['cpf']; ?>"
-                    data-whateverrg="<?php echo $linha['rg']; ?>"
+                    data-whateverassunto="<?php echo $linha['assunto']; ?>"
+                    data-whatevercargo="<?php echo $linha['cargo']; ?>"
+                    data-whateverpartido="<?php echo $linha['partido']; ?>"
                     data-whatevernascimento="<?php echo $nascimento; ?>"
                     data-whateveroperador="<?php echo $linha['criado_por']; ?>"
                     data-whateversituacao="<?php echo $linha['situacao']; ?>"
