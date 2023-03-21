@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="assets/css/styles.css">
 <?php
-ob_start();
 session_start();
 include_once('assets/cabecalho.php');
 include_once('assets/rodape.php');
