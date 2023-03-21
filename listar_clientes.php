@@ -626,7 +626,7 @@ if (isset($_SESSION['success'])) {
                         </div>
                         <div class="col-md-3 col-sm-12">
                             <label for="recipient-assunto" class="col-form-label">Assunto</label>
-                            <input type="text" name="assunto" id="recipient-assunto" maxlength="50" onkeypress="mask(this, assunto);" onblur="mask(this, assunto);" class="form-control -10" disabled>
+                            <input type="text" name="assunto" id="recipient-assunto" maxlength="50" class="form-control -10" disabled>
                         </div>
                     </div>
 
@@ -810,7 +810,7 @@ if (isset($_SESSION['success'])) {
                         <div class="col-md-3 col-sm-12">
                             <label for="recipient-assunto" class="col-form-label">assunto</label>
                             <input type="text" name="assunto" id="recipient-assunto" maxlength="50" 
-                            onkeypress="mask(this, assunto);" onblur="mask(this, assunto);" class="form-control -10">
+                            class="form-control -10">
                         </div>
                     </div>
 
