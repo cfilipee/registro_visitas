@@ -7,5 +7,5 @@
 	if(!$conn){
 		echo "ERROR: 1";
 	}else{
-			//echo "Conexao realizada com sucesso";
+			echo "Conexao realizada com sucesso";
 	}
