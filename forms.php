@@ -1,23 +1,31 @@
-<div class="modal fade" id="cadCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
+<?php
+session_start();
+include_once('assets/cabecalho.php');
+include_once('assets/rodape.php');
+include('config/conexao.php');
+include_once("config/seguranca.php");
+seguranca_adm();
+$consulta = "SELECT * FROM clientes ";
+$resultado = mysqli_query($conn, $consulta);
+?>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/brands.min.css" integrity="sha512-G/T7HQJXSeNV7mKMXeJKlYNJ0jrs8RsWzYG7rVACye+qrcUhEAYKYzaa+VFy6eFzM2+/JT1Q+eqBbZFSHmJQew==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<div class="container-fluid">
             <div class="modal-header ">
                 <h5 class="modal-title" id="exampleModalLabel">CADASTRO DE CLIENTES</h5>
-
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-
-
             </div>
 
 
             <!-- ALERTA PARA ERRO DE PREENCHIMENTO DE FORMULARIO -->
-            <div class="alert alert-danger d-none fade show m-3" role="alert">
+            <!-- <div class="alert alert-danger d-none fade show m-3" role="alert">
                 <strong>ERRO!</strong> - <strong>Preencha o campo <span id="campo-erro"></span></strong>!
                 <span id="msg"></span>
-            </div>
+            </div> -->
 
             <div class="modal-body">
                 <form method="POST" id="insert_form">
@@ -123,10 +131,7 @@
 
             </form>
 
-
-        </div>
-        <div class="m-2 col-md-8 col-sm-8 alert alert-primary ">
+        <!-- <div class="m-2 col-md-8 col-sm-8 alert alert-primary ">
             Informe o CEP e tecle [ ENTER ] para autopreencher o endereço !
-        </div>
-    </div>
+        </div> -->
 </div>

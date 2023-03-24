@@ -52,8 +52,6 @@ if (isset($_SESSION['success'])) {
             <th scope="col">Responsável</th>
             <th scope="col" class="text text-center" colspan="3">AÇÕES</th>
             
-
-            
         </tr>
     </thead>
 
