@@ -13,7 +13,7 @@ include('config/conexao.php');
 
 <div class="container-fluid">
             <div class="modal-header ">
-                <h5 class="modal-title" id="exampleModalLabel">CADASTRO DE CLIENTES</h5>
+                <h4 class="modal-title" id="exampleModalLabel">Formulário de Cadastro</h4>
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
