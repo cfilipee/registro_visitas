@@ -9,7 +9,6 @@ include('config/conexao.php');
 // $resultado = mysqli_query($conn, $consulta);
 ?>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/brands.min.css" integrity="sha512-G/T7HQJXSeNV7mKMXeJKlYNJ0jrs8RsWzYG7rVACye+qrcUhEAYKYzaa+VFy6eFzM2+/JT1Q+eqBbZFSHmJQew==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <div class="container-fluid">
             <div class="modal-header ">
@@ -28,7 +27,7 @@ include('config/conexao.php');
             </div> -->
 
             <div class="modal-body">
-                <form method="POST" id="insert_form">
+                <form  method="POST" action="forms_insert.php" id="insert_form">
 
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
