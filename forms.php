@@ -3,10 +3,10 @@ session_start();
 include_once('assets/cabecalho.php');
 include_once('assets/rodape.php');
 include('config/conexao.php');
-include_once("config/seguranca.php");
-seguranca_adm();
-$consulta = "SELECT * FROM clientes ";
-$resultado = mysqli_query($conn, $consulta);
+// include_once("config/seguranca.php");
+// seguranca_adm();
+// $consulta = "SELECT * FROM clientes ";
+// $resultado = mysqli_query($conn, $consulta);
 ?>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/brands.min.css" integrity="sha512-G/T7HQJXSeNV7mKMXeJKlYNJ0jrs8RsWzYG7rVACye+qrcUhEAYKYzaa+VFy6eFzM2+/JT1Q+eqBbZFSHmJQew==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -101,24 +101,24 @@ $resultado = mysqli_query($conn, $consulta);
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4 col-sm-12">
+                        <!-- <div class="col-md-4 col-sm-12">
                             <label for="recipient-operador" class="col-form-label cli">Operador</label>
                             <input type="text" name="operador" id="operador" maxlength="50" class="form-control" disabled value="<?php echo $_SESSION['usuarioNome'] ?>">
-                        </div>
+                        </div> -->
                         <div class="col-md-4 col-sm-12">
                             <label for="recipient-dataCadastro" class="col-form-label">Data do cadastro</label>
                             <input type="text" class="form-control" value="<?php echo date('d/m/Y - H:i:s') ?>" disabled>
                         </div>
-                        <div class="col-md-4 col-sm-12">
+                        <!-- <div class="col-md-4 col-sm-12"> -->
 
-                        <label for="recipient-situacao" class="col-form-label">Situação</label>
+                        <!-- <label for="recipient-situacao" class="col-form-label">Situação</label>
                         <select class="form-control form-select-lg mb-5 select2" name="situacao" id="situacao" aria-label=".form-select-lg example">
                             <option value="Pendente">Pendente</option>
                             <option value="Ativo">Ativo</option>
                             <option value="Inativo">Inativo</option>
                             <option value="Cancelado">Cancelado</option>
 
-                        </select>
+                        </select> -->
                        
                         </div>
                     </div>
