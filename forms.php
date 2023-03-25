@@ -14,9 +14,9 @@ include('config/conexao.php');
             <div class="modal-header ">
                 <h4 class="modal-title" id="exampleModalLabel">Formulário de Cadastro</h4>
 
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
-                </button>
+                </button> -->
             </div>
 
 
@@ -42,7 +42,7 @@ include('config/conexao.php');
 
                     <div class="row">
                         <div class="col-md-10 col-sm-12">
-                            <label for="recipient-rua" class="col-form-label">Rua</label>
+                            <label for="recipient-rua" class="col-form-label">Endereço - Rua</label>
                             <input type="text" name="rua" id="rua" maxlength="50" class="form-control">
                         </div>
                         <div class="col-md-2 col-sm-12">
@@ -95,7 +95,7 @@ include('config/conexao.php');
                             <input type="text" name="partido" id="partido" maxlength="50" class="form-control -10">
                         </div>
                         <div class="col-md-4 col-sm-12">
-                            <label for="recipient-nascimento" class="col-form-label">Nascimento</label>
+                            <label for="recipient-nascimento" class="col-form-label">Aniversário</label>
                             <input type="text" name="nascimento" id="nascimento" class="form-control -10">
                         </div>
                     </div>
