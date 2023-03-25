@@ -527,14 +527,15 @@ if (isset($_SESSION['success'])) {
                             <label for="recipient-dataCadastro" class="col-form-label">Data do cadastro</label>
                             <input type="text" class="form-control" value="<?php echo date('d/m/Y - H:i:s') ?>" disabled>
                         </div>
+                        
                         <div class="col-md-4 col-sm-12">
 
-                        <label for="recipient-situacao" class="col-form-label">Situação</label>
-                        <select class="form-control form-select-lg mb-5 select2" name="situacao" id="situacao" aria-label=".form-select-lg example">
-                            <option value="Pendente">Pendente</option>
-                            <option value="Ativo">Ativo</option>
-                            <option value="Inativo">Inativo</option>
-                            <option value="Cancelado">Cancelado</option>
+                            <label for="recipient-situacao" class="col-form-label">Situação</label>
+                            <select class="form-control form-select-lg mb-5 select2" name="situacao" id="situacao" aria-label=".form-select-lg example">
+                                <option value="Pendente">Pendente</option>
+                                <option value="Ativo">Ativo</option>
+                                <option value="Inativo">Inativo</option>
+                                <option value="Cancelado">Cancelado</option>
 
                         </select>
                        

@@ -23,10 +23,9 @@ include('config/conexao.php');
     $data_cadastro = mysqli_real_escape_string($conn, $_POST['data_cadastro']);
 
 
-    // $nascimento = str_replace("/", "-", $nascimento);
-    // $nascimento = date('Y-m-d', strtotime($nascimento));
-    
-    //$data_cadastro = date('Y-m-d H:i:s');
+    $nascimento = str_replace("/", "-", $nascimento);
+    $nascimento = date('Y-m-d', strtotime($nascimento));
+    $data_cadastro = date('Y-m-d H:i:s');
 
 
     $sql = "INSERT INTO clientes (nome, email, telefone, assunto, cep, rua, numero, bairro, complemento, cidade, uf, cargo, partido, nascimento, data_cadastro)
