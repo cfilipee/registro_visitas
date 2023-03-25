@@ -5,3 +5,27 @@
     font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
 }
+
+#main-container {
+
+    background-color: rgb(253, 253, 253);
+    width: 350px;
+    height: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 30px;
+    text-align: center;
+    margin-top: 15vh;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px #4e18a7;
+}
+
+#main-container ion-icon{
+
+    color: green;
+}
+
+#obrigado-container p {
+
+    font-weight: bold;
+}

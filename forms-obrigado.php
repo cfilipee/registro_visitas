@@ -12,8 +12,9 @@
 <div id="main-container">
     
     <div id="obrigado-container">
-        <h2><ion-icon name="checkmark-outline"></ion-icon></h2>
-        <p>Cadastro Realizado com sucesso!</p>
+        <h2><ion-icon name="checkmark-circle-sharp"></ion-icon></h2>
+        <!-- <ion-icon name="checkmark-sharp"></ion-icon> -->
+        <p>Cadastro Realizado com sucesso</p>
     </div>
 
 </div>
