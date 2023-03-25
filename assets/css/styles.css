@@ -27,15 +27,34 @@
 
 #obrigado-container p {
 
-    font-weight:bolder;
+    font-weight:bold;
+    color: rgb(34, 34, 34);
 }
 
 #botao-container {
-    background-color: black;
-    width: 100px;
-    height: 80px;
+    /* background-color: black; */
+    width: 130px;
+    height: 35px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 40px;
+    margin-top: 15px;
+    
+}
+
+#botao-container button {
+    width: 130px;
+    height: 35px;
+    background-color: #038b4e;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 10px;
+}
+
+
+#botao-container button a {    
+    color: #fff;
+    text-decoration: none;
+    font-weight: bolder;
+    text-align: center;
     
 }

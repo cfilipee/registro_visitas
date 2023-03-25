@@ -32,7 +32,7 @@ include('config/conexao.php');
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
                             <label for="recipient-nome" class="col-form-label">Nome</label>
-                            <input type="text" name="nome" id="nome" maxlength="50" class="form-control">
+                            <input type="text" name="nome" id="nome" maxlength="50" class="form-control" required>
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <label for="recipient-email" class="col-form-label">E-mail</label>
@@ -69,7 +69,7 @@ include('config/conexao.php');
                     <div class="row">
                         <div class="col-md-4 col-sm-12">
                             <label for="recipient-cidade" class="col-form-label">Cidade</label>
-                            <input type="text" name="cidade" id="cidade" maxlength="50" class="form-control">
+                            <input type="text" name="cidade" id="cidade" maxlength="50" class="form-control" required>
                         </div>
                         <div class="col-md-2 col-sm-12">
                             <label for="recipient-uf" class="col-form-label">UF</label>
@@ -77,18 +77,18 @@ include('config/conexao.php');
                         </div>
                         <div class="col-md-3 col-sm-12">
                             <label for="recipient-telefone" class="col-form-label">Telefone</label>
-                            <input type="text" name="telefone" id="telefone" onkeypress="mask(this, telefone);" onblur="mask(this, telefone);" class="form-control -10">
+                            <input type="text" name="telefone" id="telefone" onkeypress="mask(this, telefone);" onblur="mask(this, telefone);" class="form-control -10" required>
                         </div>
                         <div class="col-md-3 col-sm-12">
                             <label for="recipient-assunto" class="col-form-label">Assunto</label>
-                            <input type="text" name="assunto" id="assunto" maxlength="50" class="form-control -10">
+                            <input type="text" name="assunto" id="assunto" maxlength="50" class="form-control -10" required>
                         </div>
 
                     </div>
                     <div class="row">
                         <div class="col-md-4 col-sm-12">
                             <label for="recipient-cargo" class="col-form-label">Cargo</label>
-                            <input type="text" name="cargo" id="cargo" maxlength="50" class="form-control">
+                            <input type="text" name="cargo" id="cargo" maxlength="50" class="form-control" required>
                         </div>
                         <div class="col-md-4 col-sm-12">
                             <label for="recipient-partido" class="col-form-label">Partido</label>

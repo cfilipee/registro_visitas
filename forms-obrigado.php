@@ -20,7 +20,9 @@
 </div>
 
 <div id="botao-container">
-    <button type="button" location.href="forms.php">Novo Cadastro</button>
+    <button type="button" location.href="forms.php">
+        <a href="forms.php">Novo Cadastro</a>
+    </button>
 </div>
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
