@@ -95,7 +95,7 @@ include('config/conexao.php');
                             <input type="text" name="partido" id="partido" maxlength="50" class="form-control -10">
                         </div>
                         <div class="col-md-4 col-sm-12">
-                            <label for="recipient-nascimento" class="col-form-label">Aniversário</label>
+                            <label for="recipient-nascimento" class="col-form-label">Nascimento</label>
                             <input type="text" name="nascimento" id="nascimento" class="form-control -10">
                         </div>
                     </div>
@@ -135,3 +135,36 @@ include('config/conexao.php');
             Informe o CEP e tecle [ ENTER ] para autopreencher o endereço !
         </div> -->
 </div>
+
+<script>
+    // ================================ FUNÇÃO PARA MASCARA DE TELEFONE =============================================
+    function mask(o, f) {
+        setTimeout(function() {
+            var v = telefone(o.value);
+            if (v != o.value) {
+                o.value = v;
+            }
+        }, 1);
+    }
+
+    function telefone(v) {
+        var r = v.replace(/\D/g, "");
+        r = r.replace(/^0/, ""); //limpa o campo se começar com ZERO (0)
+        if (r.length > 10) {
+            r = r.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
+        } else if (r.length > 5) {
+            r = r.replace(/^(\d\d)(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+        } else if (r.length > 2) {
+            r = r.replace(/^(\d\d)(\d{0,5})/, "($1) $2");
+        } else {
+            r = r.replace(/^(\d*)/, "($1");
+        }
+        return r;
+    }
+
+    // ================================ FUNÇÃO PARA MASCARA DE NASCIMENTO =============================================
+    $(document).ready(function() {
+        $("#nascimento").mask("99/99/9999");
+    });
+
+</script>

@@ -181,6 +181,7 @@ if (isset($_SESSION['success'])) {
         border: 2px solid red !important;
     }
 </style>
+
 <script>
     // ================================ FUNÇÃO PARA MASCARA DE TELEFONE =============================================
     function mask(o, f) {
