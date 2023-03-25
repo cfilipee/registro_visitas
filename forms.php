@@ -106,7 +106,7 @@ include('config/conexao.php');
                         </div> -->
                         <div class="col-md-4 col-sm-12">
                             <label for="recipient-dataCadastro" class="col-form-label">Data do cadastro</label>
-                            <input type="text" class="form-control" id="data_cadastro" value="<?php echo date('d/m/Y - H:i:s') ?>" disabled>
+                            <input type="text" class="form-control" id="data_cadastro" value="<?php echo date('d/m/Y - H:i:s') ?>">
                         </div>
                         <!-- <div class="col-md-4 col-sm-12"> -->
 
