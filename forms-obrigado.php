@@ -17,6 +17,12 @@
         <p>Cadastro Realizado com sucesso</p>
     </div>
 
+    <div id="botao-container">
+
+    <button type="button" location.href="forms.php">Novo Cadastro</a>
+        
+    </div>
+
 </div>
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

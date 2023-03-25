@@ -10,7 +10,7 @@ include('config/conexao.php');
 ?>
 
 
-<div class="container-fluid">
+<div class="container">
             <div class="modal-header ">
                 <h4 class="modal-title" id="exampleModalLabel">Formulário de Cadastro</h4>
 
@@ -123,9 +123,10 @@ include('config/conexao.php');
                     </div>
 
             </div>
-            <div class="modal-footer">
+            
+            <div class="container">
                 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button> -->
-                <button type="submit" class="btn btn-primary" id="btn-cadastrar">Salvar</button>
+                <button type="submit" class="btn btn-primary btn-lg btn-block" id="btn-cadastrar">Salvar</button>
             </div>
 
             </form>
