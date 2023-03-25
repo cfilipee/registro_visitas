@@ -124,7 +124,7 @@ include('config/conexao.php');
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button> -->
                 <button type="submit" class="btn btn-primary" id="btn-cadastrar">Salvar</button>
             </div>
 

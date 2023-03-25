@@ -34,7 +34,7 @@ include('config/conexao.php');
     
     function mensagemAlerta ($texto, $tipo){
 
-        echo "<script>alert('$texto');location.href='index.php';</script>";
+        echo "<script>('$texto');location.href='forms-obrigado.php';</script>";
         
         }
 
