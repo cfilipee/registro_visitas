@@ -50,7 +50,7 @@ if (isset($_SESSION['success'])) {
             <th scope="col">Partido</th>
             <th scope="col">Assunto</th>
             <th scope="col">Data do Cadastro</th>
-            <th scope="col">Responsável</th>
+            <!-- <th scope="col">Responsável</th> -->
             <th scope="col" class="text text-center" colspan="3">AÇÕES</th>
             
         </tr>
@@ -62,7 +62,7 @@ if (isset($_SESSION['success'])) {
         $id_cliente = $linha['id_cliente'];
         $nome = ucwords(strtolower($linha['nome']));
         $telefone = $linha['telefone'];
-        $responsavel = $linha['criado_por'];
+        // $responsavel = $linha['criado_por'];
         $situacao = $linha['situacao'];
         $alterado_por = $linha['alterado_por'];
         $cargo = $linha['cargo'];
@@ -104,7 +104,7 @@ if (isset($_SESSION['success'])) {
                 <td><?php echo $partido; ?></td>
                 <td><?php echo $assunto; ?></td>
                 <td><?php echo $data_cadastro ?></td>
-                <td><?php echo $responsavel ?></td>
+                <!-- <td>//echo $responsavel ?></td> -->
                 <td class="text text-center">
 
                     <a href="#" data-toggle="modal" 
