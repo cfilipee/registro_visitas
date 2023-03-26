@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="assets/CSS/styles.css">
 <?php
 session_start();
 include_once('assets/cabecalho.php');
@@ -37,7 +38,8 @@ if (isset($_SESSION['success'])) {
     </div>
 </div>
 
-<table class="table table-bordered table-hover table-sm table-responsive-xl resultado_cliente">
+<div class="table-head-fixed">
+<table class="table table-bordered table-hover table-sm table-responsive-xl table-striped resultado_cliente">
     <thead>
         <tr class="bg-dark text text-white">
 
@@ -47,7 +49,6 @@ if (isset($_SESSION['success'])) {
             <th scope="col">Cargo</th>
             <th scope="col">Partido</th>
             <th scope="col">Assunto</th>
-            <!-- <th scope="col">ENDEREÇO</th> -->
             <th scope="col">Data do Cadastro</th>
             <th scope="col">Responsável</th>
             <th scope="col" class="text text-center" colspan="3">AÇÕES</th>
@@ -174,6 +175,7 @@ if (isset($_SESSION['success'])) {
         </tbody>
     <?php } ?>
 </table>
+</div>
 
 <!-- ================================== MODAL CADASTRAR CLIENTE----------------------------------------------------------------->
 <style>

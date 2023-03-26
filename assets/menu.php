@@ -1,7 +1,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/brands.min.css" integrity="sha512-G/T7HQJXSeNV7mKMXeJKlYNJ0jrs8RsWzYG7rVACye+qrcUhEAYKYzaa+VFy6eFzM2+/JT1Q+eqBbZFSHmJQew==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #7430F9;">
+<!-- <link rel="stylesheet" href="assets/CSS/styles.css"> -->
 
-    <a class=" navbar-brand" href="listar_clientes.php">
+<!--Nav Bar-->
+<nav class="navbar  navbar-expand-lg navbar-light" id="nav" style="background-color: #7430F9;">
+
+    <a class="navbar-brand" href="listar_clientes.php">
         <img src="./assets/img/file-earmark-person.svg" width="45" />
         <span class="d-inline-block  text-light p-2" style="max-width: 200px">Visitas Gabinete</span>
     </a>
@@ -35,4 +38,5 @@
 
         </ul>
     </div>
+
 </nav>
