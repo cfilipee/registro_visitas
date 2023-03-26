@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="assets/CSS/styles.css">
+<link rel="stylesheet" href="assets/css/styles.css">
 <?php
 session_start();
 include_once('assets/cabecalho.php');
