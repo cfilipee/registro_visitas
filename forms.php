@@ -77,7 +77,7 @@ include('config/conexao.php');
                         </div>
                         <div class="col-md-3 col-sm-12">
                             <label for="recipient-telefone" class="col-form-label">Telefone</label>
-                            <input type="text" name="telefone" id="telefone" onkeypress="mask(this, telefone);" onblur="mask(this, telefone);" class="form-control -10" required>
+                            <input type="text" name="telefone" id="telefone" onkeypress="mask(this, telefone);" class="form-control -10" required>
                         </div>
                         <div class="col-md-3 col-sm-12">
                             <label for="recipient-assunto" class="col-form-label">Assunto</label>
@@ -96,7 +96,7 @@ include('config/conexao.php');
                         </div>
                         <div class="col-md-4 col-sm-12">
                             <label for="recipient-nascimento" class="col-form-label">Nascimento</label>
-                            <input type="text" name="nascimento" id="nascimento" class="form-control -10">
+                            <input type="text" name="nascimento" id="nascimento" class="form-control -10" required>
                         </div>
                     </div>
                     <div class="row">
