@@ -49,7 +49,7 @@ if (isset($_SESSION['success'])) {
             <th scope="col">Cargo</th>
             <th scope="col">Partido</th>
             <th scope="col">Assunto</th>
-            <th scope="col">Data do Cadastro</th>
+            <th scope="col" class="text text-center">Data do Cadastro</th>
             <!-- <th scope="col">Responsável</th> -->
             <th scope="col" class="text text-center" colspan="3">AÇÕES</th>
             
@@ -103,7 +103,7 @@ if (isset($_SESSION['success'])) {
                 <td><?php echo $cargo; ?></td>                
                 <td><?php echo $partido; ?></td>
                 <td><?php echo $assunto; ?></td>
-                <td><?php echo $data_cadastro ?></td>
+                <td class="text text-center"><?php echo $data_cadastro ?></td>
                 <!-- <td>//echo $responsavel ?></td> -->
                 <td class="text text-center">
 
