@@ -6,7 +6,7 @@ include_once('assets/rodape.php');
 include('config/conexao.php');
 include_once("config/seguranca.php");
 seguranca_adm();
-$consulta = "SELECT * FROM clientes ";
+$consulta = "SELECT * FROM clientes ORDER BY id_cliente DESC";
 $resultado = mysqli_query($conn, $consulta);
 ?>
 
