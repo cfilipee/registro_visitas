@@ -36,14 +36,14 @@ $resultado = mysqli_query($conn, $busca);
             <th scope="col">CARGO</th>
             <th scope="col">PARTIDO</th>
             <th scope="col">ASSUNTO</th>
-            <th scope="col">RESPONSÁVEL</th>
+            <th scope="col">CRIADO POR</th>
             <th scope="col" class="text text-center" colspan="3">AÇÕES</th>
-            
+
             <!--<th scope="col">CPF</th>
             <th scope="col">RG</th>-->
             <!--<th scope="col">NASCIMENTO</th>-->
-            
-            
+
+
         </tr>
     </thead>
 
@@ -53,11 +53,14 @@ $resultado = mysqli_query($conn, $busca);
         $id_cliente = $linha['id_cliente'];
         $nome = ucwords(strtolower($linha['nome']));
         $telefone = $linha['telefone'];
+        $cargo = $linha['cargo'];
+        $partido = $linha['partido'];
+        $assunto = $linha['assunto'];
         $responsavel = $linha['criado_por'];
         $situacao = $linha['situacao'];
         $alterado_por = $linha['alterado_por'];
-        $cargo = $linha['cargo'];
-        $partido = $linha['partido'];
+
+
 
 
         // CONVERTENDO DATA/HORA PARA PADRAO PORTUGUES-BR
@@ -80,79 +83,32 @@ $resultado = mysqli_query($conn, $busca);
         $uf = $linha['uf'];
 
         $endereco = $rua . ", " . $numero . " - " . $bairro . "-" . $cidade . "/" . $uf;*/
-        
+
     ?>
 
-    <!--AMOSTRAGEM DE INFORMAÇÕES PARA A TELA (ECHO)-->
+        <!--AMOSTRAGEM DE INFORMAÇÕES PARA A TELA (ECHO)-->
         <tbody>
             <tr>
                 <td><?php echo $id_cliente ?></td>
                 <td><?php echo ucwords(strtolower($nome)); ?></td>
                 <td><?php echo $linha['telefone']; ?></td>
                 <td><?php echo $cargo; ?></td>
-                <!--<td><?//php echo $endereco; ?></td>-->
-                
+                <!--<td><? //php echo $endereco; 
+                        ?></td>-->
+
                 <td><?php echo $partido; ?></td>
-                <td><?php echo $nascimento ?></td>
+                <td><?php echo $assunto ?></td>
                 <td><?php echo $responsavel ?></td>
                 <td class="text text-center">
 
-                    <a href="#" data-toggle="modal"
-                    data-backdrop="static"
-                    data-keyboard="false"
-                    data-target="#visulaizarCliente"
-                    data-whatever="<?php echo $linha['id_cliente']; ?>"
-                    data-whatevernome="<?php echo ucwords(strtolower($linha['nome'])); ?>"
-                    data-whateveremail="<?php echo $linha['email']; ?>"
-                    data-whatevertelefone="<?php echo $linha['telefone']; ?>"
-                    data-whateverrua="<?php echo ucwords(strtolower($linha['rua'])); ?>"
-                    data-whatevernumero="<?php echo $linha['numero']; ?>"
-                    data-whateverbairro="<?php echo $linha['bairro']; ?>"
-                    data-whatevercomplemento="<?php echo $linha['complemento']; ?>"
-                    data-whatevercep="<?php echo $linha['cep']; ?>"
-                    data-whatevercidade="<?php echo $linha['cidade']; ?>"
-                    data-whateveruf="<?php echo $linha['uf']; ?>"
-                    data-whatevertelefone="<?php echo $linha['telefone']; ?>"
-                    data-whateverassunto="<?php echo $linha['assunto']; ?>"
-                    data-whatevercargo="<?php echo $linha['cargo']; ?>"
-                    data-whateverpartido="<?php echo $linha['partido']; ?>"
-                    data-whatevernascimento="<?php echo $nascimento; ?>"
-                    data-whateveroperador="<?php echo $linha['criado_por']; ?>"
-                    data-whateversituacao="<?php echo $situacao; ?>"
-                    data-whateverdata-cadastro="<?php echo $data_cadastro; ?>"
-                    data-whateveralterado_por="<?php echo $alterado_por; ?>"
-                    data-whateverultima_alteracao="<?php echo $ultima_alteracao; ?>">
+                    <a href="#" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#visulaizarCliente" data-whatever="<?php echo $linha['id_cliente']; ?>" data-whatevernome="<?php echo ucwords(strtolower($linha['nome'])); ?>" data-whateveremail="<?php echo $linha['email']; ?>" data-whatevertelefone="<?php echo $linha['telefone']; ?>" data-whateverrua="<?php echo ucwords(strtolower($linha['rua'])); ?>" data-whatevernumero="<?php echo $linha['numero']; ?>" data-whateverbairro="<?php echo $linha['bairro']; ?>" data-whatevercomplemento="<?php echo $linha['complemento']; ?>" data-whatevercep="<?php echo $linha['cep']; ?>" data-whatevercidade="<?php echo $linha['cidade']; ?>" data-whateveruf="<?php echo $linha['uf']; ?>" data-whatevertelefone="<?php echo $linha['telefone']; ?>" data-whateverassunto="<?php echo $linha['assunto']; ?>" data-whatevercargo="<?php echo $linha['cargo']; ?>" data-whateverpartido="<?php echo $linha['partido']; ?>" data-whatevernascimento="<?php echo $nascimento; ?>" data-whateveroperador="<?php echo $linha['criado_por']; ?>" data-whateversituacao="<?php echo $situacao; ?>" data-whateverdata-cadastro="<?php echo $data_cadastro; ?>" data-whateveralterado_por="<?php echo $alterado_por; ?>" data-whateverultima_alteracao="<?php echo $ultima_alteracao; ?>">
 
                         <i class="far fa-eye text text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Visualizar"></i>
                     </a>
                 </td>
 
                 <td class="text text-center">
-                    <a href="#" data-toggle="modal"
-                    data-backdrop="static"
-                    data-keyboard="false"
-                    data-target="#editarCliente"
-                    data-whatever="<?php echo $linha['id_cliente']; ?>"
-                    data-whatevernome="<?php echo ucwords(strtolower($linha['nome'])); ?>"
-                    data-whateveremail="<?php echo $linha['email']; ?>"
-                    data-whatevertelefone="<?php echo $linha['telefone']; ?>"
-                    data-whateverrua="<?php echo ucwords(strtolower($linha['rua'])); ?>"
-                    data-whatevernumero="<?php echo $linha['numero']; ?>"
-                    data-whateverbairro="<?php echo $linha['bairro']; ?>"
-                    data-whatevercomplemento="<?php echo $linha['complemento']; ?>"
-                    data-whatevercep="<?php echo $linha['cep']; ?>"
-                    data-whatevercidade="<?php echo $linha['cidade']; ?>"
-                    data-whateveruf="<?php echo $linha['uf']; ?>"
-                    data-whatevertelefone="<?php echo $linha['telefone']; ?>"
-                    data-whateverassunto="<?php echo $linha['assunto']; ?>"
-                    data-whatevercargo="<?php echo $linha['cargo']; ?>"
-                    data-whateverpartido="<?php echo $linha['partido']; ?>"
-                    data-whatevernascimento="<?php echo $nascimento; ?>"
-                    data-whateveroperador="<?php echo $linha['criado_por']; ?>"
-                    data-whateversituacao="<?php echo $linha['situacao']; ?>"
-                    data-whateverdata-cadastro="<?php echo $data_cadastro ?>"
-                    data-whateveralterado_por="<?php echo $alterado_por; ?>"
-                    data-whateverultima_alteracao="<?php echo $ultima_alteracao; ?>">
+                    <a href="#" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#editarCliente" data-whatever="<?php echo $linha['id_cliente']; ?>" data-whatevernome="<?php echo ucwords(strtolower($linha['nome'])); ?>" data-whateveremail="<?php echo $linha['email']; ?>" data-whatevertelefone="<?php echo $linha['telefone']; ?>" data-whateverrua="<?php echo ucwords(strtolower($linha['rua'])); ?>" data-whatevernumero="<?php echo $linha['numero']; ?>" data-whateverbairro="<?php echo $linha['bairro']; ?>" data-whatevercomplemento="<?php echo $linha['complemento']; ?>" data-whatevercep="<?php echo $linha['cep']; ?>" data-whatevercidade="<?php echo $linha['cidade']; ?>" data-whateveruf="<?php echo $linha['uf']; ?>" data-whatevertelefone="<?php echo $linha['telefone']; ?>" data-whateverassunto="<?php echo $linha['assunto']; ?>" data-whatevercargo="<?php echo $linha['cargo']; ?>" data-whateverpartido="<?php echo $linha['partido']; ?>" data-whatevernascimento="<?php echo $nascimento; ?>" data-whateveroperador="<?php echo $linha['criado_por']; ?>" data-whateversituacao="<?php echo $linha['situacao']; ?>" data-whateverdata-cadastro="<?php echo $data_cadastro ?>" data-whateveralterado_por="<?php echo $alterado_por; ?>" data-whateverultima_alteracao="<?php echo $ultima_alteracao; ?>">
 
                         <i class="far fa-edit text text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"></i></a>
                 </td>

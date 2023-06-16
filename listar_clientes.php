@@ -49,8 +49,9 @@ if (isset($_SESSION['success'])) {
                 <th scope="col">Cargo</th>
                 <th scope="col">Partido</th>
                 <th scope="col">Assunto</th>
-                <th scope="col" class="text text-center">Data do Cadastro</th>
                 <!-- <th scope="col">Responsável</th> -->
+                <th scope="col" class="text text-center">Data do Cadastro</th>
+
                 <th scope="col" class="text text-center" colspan="3">AÇÕES</th>
 
             </tr>
